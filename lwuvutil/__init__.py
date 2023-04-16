@@ -59,7 +59,6 @@ def uvoper1(self, context):
     edge_end = None; edge_end_n = None
     
     for ie, e in enumerate(esel):
-        print("new")
         conns = 0 # connection counter
         edgesel = None
         edgenum = None
@@ -67,11 +66,9 @@ def uvoper1(self, context):
             if e is ee:
                 continue
             c = connected(e, ee)
-            print("connected:", c)
             if not c is None:
                 conns += 1
                 if conns == 2:
-                    print("both!")
                     break
                 edgesel = ie
                 edgenum = c
@@ -152,7 +149,7 @@ class AlignOperator(bpy.types.Operator):
 
 
 def menu_func(self, context):
-    self.layout.operator(AlignOperator.bl_idname, text="Align uniformly")
+    self.layout.operator(AlignOperator.bl_idname, text=AlignOperator.bl_label)
 
 def register():
     bpy.utils.register_class(AlignOperator)
